@@ -1,0 +1,5 @@
+
+
+Starting an algo:
+    -usually LL algo assume that there is a node that exists and kicking that off is sometimes ugly
+        -some strategies you can use are to create a dummy node, or find the head
