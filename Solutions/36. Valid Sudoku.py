@@ -1,5 +1,30 @@
 #https://leetcode.com/problems/valid-sudoku/
 
+# 9/2/2024
+def isValidSudoku(self, board):
+    # we need to validate all columns, rows, and subgrids
+    # initialize sets 1-9 for each
+    col = [set() for _ in range(9)]
+    row = [set() for _ in range(9)]
+    sub = [set() for _ in range(9)]
+
+    # iterate through every element in board
+    for row_i, board_row in enumerate(board):
+        # validate num for respective col, row, subgrid
+        for col_i, num in enumerate(board_row):
+            if num == '.':
+                continue
+            sub_i = (3 * (row_i // 3) + (col_i // 3))
+            if num in col[col_i] or num in row[row_i] or num in sub[sub_i]:
+                return False
+            else:
+                col[col_i].add(num)
+                row[row_i].add(num)
+                sub[sub_i].add(num)
+
+    return True
+
+
 board = [
     [".","8","7","6","5","4","3","2","1"],
     ["2",".",".",".",".",".",".",".","."],
@@ -66,4 +91,6 @@ def isValidSudoku(board):
     return True
 
 print(isValidSudoku(board))
+
+
 
